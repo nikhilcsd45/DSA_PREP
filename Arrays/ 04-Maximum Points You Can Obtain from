@@ -1,0 +1,16 @@
+def maxScore(self, cardPoints, k):
+        n=len(cardPoints)
+        lsum=0
+        
+        for i in range(k):
+            lsum+=cardPoints[i]
+        end=n-1
+        res=lsum
+        rsum=0
+        for j in range(k-1,-1,-1):
+            lsum-=cardPoints[j]
+            rsum+=cardPoints[end]
+            end-=1
+            res=max(lsum+rsum,res)
+        return res
+            

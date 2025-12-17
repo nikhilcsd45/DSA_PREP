@@ -1,0 +1,24 @@
+def numberOfSubarrays(self, nums, k):
+    
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: int
+    """
+
+    def atmostk(nums,x):
+        l=0
+        nicearr=0
+        oddnum=0
+        for ind,num in enumerate(nums):
+            if num%2==1:
+                oddnum+=1
+            while oddnum>x:
+                if nums[l]%2==1:
+                    oddnum-=1
+                l+=1
+            nicearr+=ind-l+1
+        return nicearr
+    return atmostk(nums,k)-atmostk(nums,k-1)
+
+
